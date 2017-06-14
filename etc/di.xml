@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Space48_ProductAvailability
+ *
+ * @category    Space48
+ * @package     Space48_ProductAvailability
+ * @Date        03/2017
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      @diazwatson
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\GroupedProduct\Model\Product\Type\Grouped">
+        <plugin name="addAttributesToGroupedAssociatedProducts" type="Space48\PreSell\Plugin\Model\Product\Type\Grouped" sortOrder="1" disabled="false"/>
+    </type>
+</config>
