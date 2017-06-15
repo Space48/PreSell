@@ -3,7 +3,7 @@
     <body>
         <referenceBlock name="productalert.stock" remove="true"/>
         <referenceContainer name="alert.urls">
-            <block class="Space48\PreSell\Block\ProductAlert\Product\View\Stock" name="space48.productalert.stock" as="space48_productalert_stock" template="Space48_ProductAvailability::catalog/product/out-of-stock-button.phtml">
+            <block class="Space48\PreSell\Block\ProductAlert\Product\View\Stock" name="space48.productalert.stock" as="space48_productalert_stock" template="Space48_PreSell::catalog/product/out-of-stock-button.phtml">
                 <action method="setHtmlClass">
                     <argument name="value" xsi:type="string">stock</argument>
                 </action>
