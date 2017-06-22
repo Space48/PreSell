@@ -14,4 +14,7 @@
     <type name="Magento\GroupedProduct\Model\Product\Type\Grouped">
         <plugin name="addAttributesToGroupedAssociatedProducts" type="Space48\PreSell\Plugin\Model\Product\Type\Grouped" sortOrder="1" disabled="false"/>
     </type>
+    <type name="Magento\ProductAlert\Controller\Add\Stock">
+        <plugin name="redirectUserToReferrerWhenUsingNotifyMeButton" type="Space48\PreSell\Plugin\ProductAlert\Controller\Add\Stock"/>
+    </type>
 </config>
