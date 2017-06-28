@@ -10,7 +10,7 @@ class PreSell extends View
     private $stockItem;
 
     public function __construct(
-        StockItemRepositoryInterface $stockItem
+        StockRegistry $stockItem
     ) {
         $this->stockItem = $stockItem;
     }
@@ -21,7 +21,7 @@ class PreSell extends View
      */
     public function getStockItemQty($productId)
     {
-        $stock = $this->stockItem->get($productId);
+        $stock = $this->stockItem->getStockItem($productId);
         return $stock->getQty();
     }
 
