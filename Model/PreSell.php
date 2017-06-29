@@ -2,7 +2,7 @@
 
 namespace Space48\PreSell\Model;
 
-use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
+use Magento\CatalogInventory\Model\StockRegistry;
 use Magento\ProductAlert\Block\Product\View;
 
 class PreSell extends View
