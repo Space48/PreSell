@@ -27,10 +27,10 @@ To install this module copy the code from this repo to `app/code/Space48/PreSell
 
 **Via composer**:
 
-From the terminal execute the following:
+From the terminal execute the following to add presell repository to the repository list:
 
 `composer config repositories.space48-presell vcs git@github.com:Space48/PreSell.git`
 
-then
+then execute the following command to install the module.
 
-`composer require "space48/presell:1.0.0"`
+`composer require "space48/presell:{release-version}"`
