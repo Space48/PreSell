@@ -1,67 +1,43 @@
 <?php
 
-namespace Space48\PreSell\Test\Unit\Model;
+namespace Space48\PreSell\Block;
 
-use Magento\CatalogInventory\Api\Data\StockItemInterface;
-use Magento\CatalogInventory\Api\StockItemRepositoryInterface;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 use Magento\Catalog\Model\Product;
-use Space48\PreSell\Model\PreSell;
+use Magento\CatalogInventory\Model\StockRegistry;
 
 class PreSellTest extends \PHPUnit_Framework_TestCase
 {
+
+    /**
+     * @var PHPUnit_Framework_MockObject_MockObject | \Space48\PreSell\Block\PreSell
+     */
     public $preSell;
-    public $objectManager;
+    /**
+     * @var \PHPUnit_Framework_MockObject_MockObject | \Magento\Catalog\Model\Product
+     */
     public $productMock;
     public $stockItemRepositoryMock;
-    public $stockItemInterfaceMock;
 
     public function setUp()
     {
-        /* StockItemRepository Mock */
-
-        $this->stockItemInterfaceMock = $this->getMockBuilder(
-            StockItemInterface::class
-        )
+        $this->stockItemRepositoryMock = $this->getMockBuilder(StockRegistry::class)
             ->disableOriginalConstructor()
             ->getMock();
-
-        $this->stockItemRepositoryMock = $this->getMockBuilder(
-            StockItemRepositoryInterface::class
-        )
-            ->disableOriginalConstructor()
-            ->setMethods([
-                'get',
-                'save',
-                'getList',
-                'delete',
-                'deleteById'
-            ])
-            ->getMock();
-
-        $this->stockItemRepositoryMock->method('get')->willReturn($this->stockItemInterfaceMock);
 
         /* PreSell Class */
-
-        $this->objectManager = new ObjectManager($this);
-
-        $this->preSell = $this->objectManager->getObject(
-            PreSell::class,
-            [
-                'StockItemRepository' => $this->stockItemRepositoryMock
-            ]
-        );
+        /** @var \Space48\PreSell\Block\PreSell preSell */
+        $this->preSell = new PreSell($this->stockItemRepositoryMock);
 
         /* Product Mock */
-
         $this->productMock = $this->getMockBuilder(Product::class)
+            ->disableOriginalConstructor()
             ->setMethods([
                 'getPreSell',
                 'getPreSellQty',
                 'getId',
-                'getTypeId'
+                'getTypeId',
+                'getData'
             ])
-            ->disableOriginalConstructor()
             ->getMock();
 
         $this->productMock->method('getId')->willReturn(1);
@@ -78,18 +54,6 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
                 ->isProductInStockOrAvailableForPreSale($this->productMock)
         );
     }
-
-    /*public function testReturnsFalseIfSimpleProductAndQtyLessThanZero()
-    {
-        $this->productMock->method('getQty')->willReturn(0);
-        $this->productMock->method('getTypeId')->willReturn('simple');
-        $this->productMock->method('getPreSellQty')->willReturn(0);
-
-        $this->assertFalse(
-            $this->preSell
-                ->isProductInStockOrAvailableForPreSale($this->productMock)
-        );
-    }*/
 
     public function testIsValidStockProductReturnsFalseIfProductIsNull()
     {
@@ -111,7 +75,7 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValidStockProductReturnsTrueIfProductIsSimple()
     {
-        $this->productMock->method('getTypeId')->willReturn('simple');
+        $this->productMock->method('getData')->with('type_id')->willReturn('simple');
 
         $this->assertTrue(
             $this->preSell
@@ -121,8 +85,8 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
 
     public function testCanPreSellIfPreSellSetAndPreSellQtyAboveZero()
     {
-        $this->productMock->method('getPreSellQty')->willReturn(34);
-        $this->productMock->method('getPreSell')->willReturn(true);
+        $this->productMock->expects($this->at(0))->method('getData')->with('pre_sell')->willReturn(true);
+        $this->productMock->expects($this->at(1))->method('getData')->with('pre_sell_qty')->willReturn(34);
 
         $this->assertTrue($this->preSell->canPreSell($this->productMock));
     }

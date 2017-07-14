@@ -2,25 +2,34 @@
 
 namespace Space48\PreSell\Block\Catalog\Product;
 
+use Magento\Catalog\Block\Product\Context;
 use Magento\Catalog\Block\Product\View as ProductView;
-use Space48\PreSell\Model\PreSell;
+use Magento\Catalog\Helper\Product;
+use Magento\Catalog\Model\ProductTypes\ConfigInterface;
+use Magento\Customer\Model\Session;
+use Magento\Framework\Locale\FormatInterface;
+use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\Url\EncoderInterface;
+use Space48\PreSell\Block\PreSell;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 
 class View extends ProductView
 {
+
     private $preSell;
 
     public function __construct(
-        \Magento\Catalog\Block\Product\Context $context,
-        \Magento\Framework\Url\EncoderInterface $urlEncoder,
+        Context $context,
+        EncoderInterface $urlEncoder,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Framework\Stdlib\StringUtils $string,
-        \Magento\Catalog\Helper\Product $productHelper,
-        \Magento\Catalog\Model\ProductTypes\ConfigInterface $productTypeConfig,
-        \Magento\Framework\Locale\FormatInterface $localeFormat,
-        \Magento\Customer\Model\Session $customerSession,
+        StringUtils $string,
+        Product $productHelper,
+        ConfigInterface $productTypeConfig,
+        FormatInterface $localeFormat,
+        Session $customerSession,
         ProductRepositoryInterface $productRepository,
-        \Magento\Framework\Pricing\PriceCurrencyInterface $priceCurrency,
+        PriceCurrencyInterface $priceCurrency,
         PreSell $preSell,
         array $data = []
     ) {

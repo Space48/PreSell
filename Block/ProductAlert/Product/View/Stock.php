@@ -5,7 +5,7 @@ namespace Space48\PreSell\Block\ProductAlert\Product\View;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\ProductAlert\Block\Product\View;
 use Magento\ProductAlert\Helper\Data;
-use Space48\PreSell\Model\PreSell;
+use Space48\PreSell\Block\PreSell;
 use Magento\Framework\Registry;
 use Magento\Framework\Data\Helper\PostHelper;
 
