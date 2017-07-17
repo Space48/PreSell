@@ -87,7 +87,7 @@ class PreSell
      */
     public function getItemId($product)
     {
-        return $product->getData('row_id') ? $product->getData('row_id') : $product->getData('entity_id');
+        return $product->getData('entity_id');
     }
 
     /**
