@@ -3,6 +3,7 @@
 namespace Space48\PreSell\Block;
 
 use Magento\CatalogInventory\Model\StockRegistry;
+use Magento\Store\Model\StoreManager;
 
 class PreSell
 {
@@ -12,10 +13,17 @@ class PreSell
      */
     private $stockItem;
 
+    /**
+     * @var StoreManager
+     */
+    private $storeManager;
+
     public function __construct(
-        StockRegistry $stockItem
+        StockRegistry $stockItem,
+        StoreManager $storeManager
     ) {
         $this->stockItem = $stockItem;
+        $this->storeManager = $storeManager;
     }
 
     /**
@@ -100,6 +108,18 @@ class PreSell
         $stock = $this->stockItem->getStockItem($productId);
 
         return $stock->getQty();
+    }
+
+    /**
+     * @param $productId
+     *
+     * @return float
+     */
+    public function getStockItemIsInStock($productId)
+    {
+        $stock = $this->stockItem->getStockItem($productId);
+
+        return $stock->getIsInStock();
     }
 
     /**
