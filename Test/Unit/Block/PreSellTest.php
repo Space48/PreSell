@@ -49,17 +49,13 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
         $this->productMock->method('getTypeId')->willReturn('configurable');
         $this->productMock->method('getPreSellQty')->willReturn(0);
 
-        $this->assertTrue(
-            $this->preSell
-                ->isProductInStockOrAvailableForPreSale($this->productMock)
+        $this->assertTrue($this->preSell->isProductInStockOrAvailableForPreSale($this->productMock)
         );
     }
 
     public function testIsValidStockProductReturnsFalseIfProductIsNull()
     {
-        $this->assertFalse(
-            $this->preSell
-                ->isValidStockProduct(null)
+        $this->assertFalse($this->preSell->isValidStockProduct(null)
         );
     }
 
@@ -67,9 +63,7 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
     {
         $this->productMock->method('getTypeId')->willReturn(null);
 
-        $this->assertFalse(
-            $this->preSell
-                ->isValidStockProduct($this->productMock)
+        $this->assertFalse($this->preSell->isValidStockProduct($this->productMock)
         );
     }
 
@@ -77,9 +71,7 @@ class PreSellTest extends \PHPUnit_Framework_TestCase
     {
         $this->productMock->method('getData')->with('type_id')->willReturn('simple');
 
-        $this->assertTrue(
-            $this->preSell
-                ->isValidStockProduct($this->productMock)
+        $this->assertTrue($this->preSell->isValidStockProduct($this->productMock)
         );
     }
 
