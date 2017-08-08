@@ -1,26 +1,23 @@
 checks:
-    php:
-        code_rating: true
-        duplication: true
-        excluded_dependencies:
-          - magento/framework
+    php: true
 
 build:
     environment:
-        php:
-            version: 7.0.8
-        postgresql: false
-        mongodb: false
-
-    tests:
-        stop_on_failure: false
+        php: '7.0.8'
+    dependencies:
         override:
-            - phpcs-run --ignore=*/vendor/* --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /home/scrutinizer/build
+            - { command: 'mkdir -p app/etc && rm -rf ./vendor/ && composer install --no-interaction', idle_timeout: 600 }
+    tests:
+        override:
+            - phpcs-run --config-set installed_paths /home/scrutinizer/build/vendor/magento/marketplace-eqp/
+            - phpcs-run --standard=MEQP2 --ignore=./vendor/ ./
+    cache:
+        directories: [ ~/.composer/cache ]
+filter:
+    paths: ["*"]
+    excluded_paths:
+        - "Tests/"
 tools:
-  php_code_sniffer:
-    filter:
-      excluded-paths: [ vendor/* ]
-
-  php_analyzer:
-    filter:
-      excluded-paths: [ vendor/* ]
+    external_code_coverage:
+        timeout: 7200
+        runs: 1
