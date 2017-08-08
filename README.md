@@ -1,4 +1,8 @@
-# PreSell
+# PreSell Module for Magento 2
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Space48/PreSell/badges/quality-score.png?b=master&s=7210069e74b8b2e80850a97f722117ac72655eb6)](https://scrutinizer-ci.com/g/Space48/PreSell/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/Space48/PreSell/badges/build.png?b=master&s=36a86ee32d2c7ad2d3cce148ad8d8faac2d70e59)](https://scrutinizer-ci.com/g/Space48/PreSell/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/Space48/PreSell/badges/coverage.png?b=master&s=4a30cd427d9faf4f0ead350e655f1659d3e3c2d1)](https://scrutinizer-ci.com/g/Space48/PreSell/?branch=master)
+
 This module changes the logic that determines if the "Add to Cart" button and "Notify Me When Back In Stock" button shows. It does this by adding two new attributes:
 
 - pre_sell (yes/no int)
