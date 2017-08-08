@@ -3,12 +3,11 @@ checks:
         code_rating: true
         duplication: true
         excluded_dependencies:
-                    - magento/framework
+          - magento/*
 
 before_commands:
     - git clone git@github.com:magento-ecg/coding-standard.git ../magento-ecg-ruleset/
     - git clone git@github.com:magento/marketplace-eqp.git ../magento-marketplace-eqp-ruleset/
-
 
 build:
     environment:
@@ -18,8 +17,5 @@ build:
     tests:
         stop_on_failure: false
         override:
-            - phpcs-run
-
-
-            - phpcs-run --standard=../magento-ecg-ruleset/magento-ecg-ruleset/coding-standard/EcgM2/ruleset.xml ./
-            - phpcs-run --standard=../magento-marketplace-eqp-ruleset/MEQP2/ruleset.xml build/sub/folder ./
+            - phpcs-run --standard=../magento-ecg-ruleset/magento-ecg-ruleset/coding-standard/EcgM2/ruleset.xml /
+            - phpcs-run --standard=../magento-marketplace-eqp-ruleset/MEQP2/ruleset.xml /
