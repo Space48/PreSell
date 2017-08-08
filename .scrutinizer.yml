@@ -24,3 +24,11 @@ build:
         override:
             - phpcs-run --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /
             - phpcs-run --standard=./vendor/magento/marketplace-eqp/MEQP2/ruleset.xml /
+tools:
+  php_code_sniffer:
+    filter:
+      excluded-paths: [ vendor/* ]
+
+  php_analyzer:
+    filter:
+      excluded-paths: [ vendor/* ]
