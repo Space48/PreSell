@@ -16,14 +16,14 @@ build:
         override:
             - vendor/bin/phpunit
             -
-                command: 'vendor/bin/phpunit --coverage-clover=some-file'
+                command: 'vendor/bin/phpunit --coverage-clover=coverage.xml'
                 coverage:
-                    file: 'some-file'
+                    file: 'coverage.xml'
                     format: 'clover'
         stop_on_failure: false
         override:
-            - phpcs-run --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /
-            - phpcs-run --standard=./vendor/magento/marketplace-eqp/MEQP2/ruleset.xml /
+            - phpcs-run --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /home/scrutinizer/build
+            - phpcs-run --standard=./vendor/magento/marketplace-eqp/MEQP2/ruleset.xml /home/scrutinizer/build
 tools:
   php_code_sniffer:
     filter:
