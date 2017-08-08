@@ -3,11 +3,7 @@ checks:
         code_rating: true
         duplication: true
         excluded_dependencies:
-          - magento/*
-
-before_commands:
-    - git clone git@github.com:magento-ecg/coding-standard.git ../magento-ecg-ruleset/
-    - git clone git@github.com:magento/marketplace-eqp.git ../magento-marketplace-eqp-ruleset/
+          - magento/framework
 
 build:
     environment:
@@ -17,7 +13,14 @@ build:
         mongodb: false
 
     tests:
+        overrode:
+            - vendor/bin/phpunit
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=some-file'
+                coverage:
+                    file: 'some-file'
+                    format: 'clover'
         stop_on_failure: false
         override:
-            - phpcs-run --standard=../magento-ecg-ruleset/magento-ecg-ruleset/coding-standard/EcgM2/ruleset.xml /
-            - phpcs-run --standard=../magento-marketplace-eqp-ruleset/MEQP2/ruleset.xml /
+            - phpcs-run --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /
+            - phpcs-run --standard=./vendor/magento/marketplace-eqp/MEQP2/ruleset.xml /
