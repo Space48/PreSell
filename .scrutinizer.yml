@@ -2,6 +2,8 @@ checks:
     php:
         code_rating: true
         duplication: true
+        excluded_dependencies:
+                    - magento/framework
 
 before_commands:
     - git clone git@github.com:magento-ecg/coding-standard.git ../magento-ecg-ruleset/
