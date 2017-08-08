@@ -15,8 +15,7 @@ build:
     tests:
         stop_on_failure: false
         override:
-            - phpcs-run --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /home/scrutinizer/build
-            - phpcs-run --standard=./vendor/magento/marketplace-eqp/MEQP2/ruleset.xml /home/scrutinizer/build
+            - phpcs-run --ignore=*/vendor/* --standard=./vendor/magento-ecg/coding-standard/EcgM2/ruleset.xml /home/scrutinizer/build
 tools:
   php_code_sniffer:
     filter:
