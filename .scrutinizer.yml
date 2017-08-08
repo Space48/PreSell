@@ -13,7 +13,7 @@ build:
         mongodb: false
 
     tests:
-        overrode:
+        override:
             - vendor/bin/phpunit
             -
                 command: 'vendor/bin/phpunit --coverage-clover=some-file'
