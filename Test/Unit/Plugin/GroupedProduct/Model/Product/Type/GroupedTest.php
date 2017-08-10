@@ -11,7 +11,7 @@ namespace Space48\PreSell\Plugin\GroupedProduct\Model\Product\Type;
 
 use Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection;
 use Magento\GroupedProduct\Model\Product\Type\Grouped;
-use \Space48\PreSell\Plugin\GroupedProduct\Model\Product\Type\Grouped as GroupedPlugin;
+use \Space48\PreSell\Plugin\GroupedProduct\Model\Product\Type\GroupedPlugin as GroupedPlugin;
 
 class GroupedTest extends \PHPUnit_Framework_TestCase
 {
@@ -22,7 +22,7 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
     private $groupedPlugin;
 
     /**
-     * @var Grouped | \PHPUnit_Framework_MockObject_MockObject
+     * @var GroupedPlugin | \PHPUnit_Framework_MockObject_MockObject
      */
     private $mockProductTypeGrouped;
 
@@ -52,8 +52,8 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param Grouped    $subject
-     * @param Collection $result
+     * @param GroupedPlugin $subject
+     * @param Collection    $result
      *
      * @return Collection|\PHPUnit_Framework_MockObject_MockObject
      */

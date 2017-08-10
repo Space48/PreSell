@@ -5,7 +5,7 @@ namespace Space48\PreSell\Plugin\GroupedProduct\Model\Product\Type;
 use \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection;
 use \Magento\GroupedProduct\Model\Product\Type\Grouped as TypeGrouped;
 
-class Grouped
+class GroupedPlugin
 {
 
     /**

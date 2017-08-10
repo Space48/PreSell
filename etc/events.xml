@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_before">
+        <observer name="space48_presell_order_place_check" instance="Space48\PreSell\Observer\Restrictions\Order"/>
+    </event>
+    <event name="adminhtml_sales_order_create_process_data">
+        <observer name="space48_presell_admin_order_place_check" instance="Space48\PreSell\Observer\Restrictions\AdminOrder"/>
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="space48_presell_add_cart_check" instance="Space48\PreSell\Observer\Restrictions\Add"/>
+    </event>
+    <event name="checkout_cart_update_items_after">
+        <observer name="space48_presell_update_cart_check" instance="Space48\PreSell\Observer\Restrictions\Update"/>
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_index">
+        <observer name="space48_presell_cart_page_check" instance="Space48\PreSell\Observer\Restrictions\Cart"/>
+    </event>
+</config>

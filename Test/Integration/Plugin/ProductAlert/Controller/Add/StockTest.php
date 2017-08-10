@@ -33,7 +33,7 @@ class StockTest extends \PHPUnit_Framework_TestCase
     {
         $pluginInfo = $this->getPluginStockInfo();
 
-        $this->assertSame(Stock::class, $pluginInfo['Space48_PreSell::Stock']['instance']);
+        $this->assertSame(StockPlugin::class, $pluginInfo['Space48_PreSell::Stock']['instance']);
     }
 
     /**

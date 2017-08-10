@@ -2,7 +2,7 @@
 
 namespace Space48\PreSell\Plugin\ProductAlert\Controller\Add;
 
-class Stock
+class StockPlugin
 {
     public function aroundExecute(\Magento\ProductAlert\Controller\Add\Stock $subject, callable $proceed)
     {

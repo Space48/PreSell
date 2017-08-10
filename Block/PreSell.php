@@ -14,16 +14,14 @@ class PreSell
     private $stockItem;
 
     /**
-     * @var StoreManager
+     * PreSell constructor.
+     *
+     * @param StockRegistry $stockItem
      */
-    private $storeManager;
-
     public function __construct(
-        StockRegistry $stockItem,
-        StoreManager $storeManager
+        StockRegistry $stockItem
     ) {
         $this->stockItem = $stockItem;
-        $this->storeManager = $storeManager;
     }
 
     /**
@@ -56,7 +54,7 @@ class PreSell
      */
     public function isValidStockProduct($product)
     {
-        return $product && $product->getData('type_id') == "simple" ? true : false;
+        return ($product && $product->getData('type_id') === 'simple');
     }
 
     /**
@@ -111,18 +109,6 @@ class PreSell
     }
 
     /**
-     * @param $productId
-     *
-     * @return float
-     */
-    public function getStockItemIsInStock($productId)
-    {
-        $stock = $this->stockItem->getStockItem($productId);
-
-        return $stock->getIsInStock();
-    }
-
-    /**
      * @param $product \Magento\Catalog\Model\Product
      *
      * @return bool
@@ -133,7 +119,19 @@ class PreSell
             return false;
         }
 
-        return $product->getData('pre_sell_qty') > 0 ? true : false;
+        return $product->getData('pre_sell_qty') > 0;
+    }
+
+    /**
+     * @param $productId
+     *
+     * @return float
+     */
+    public function getStockItemIsInStock($productId)
+    {
+        $stock = $this->stockItem->getStockItem($productId);
+
+        return $stock->getIsInStock();
     }
 
     /**

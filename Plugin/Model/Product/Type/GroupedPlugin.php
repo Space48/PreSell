@@ -6,7 +6,7 @@ use \Magento\Catalog\Model\ResourceModel\Product\Link\Product\Collection;
 use \Magento\GroupedProduct\Model\Product\Type\Grouped as TypeGrouped;
 
 
-class Grouped
+class GroupedPlugin
 {
     public function afterGetAssociatedProductCollection(TypeGrouped $subject, Collection $result)
     {

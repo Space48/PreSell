@@ -33,7 +33,7 @@ class GroupedTest extends \PHPUnit_Framework_TestCase
     {
         $pluginInfo = $this->getGroupedPluginInfo();
 
-        $this->assertSame(Grouped::class, $pluginInfo['Space48_PreSell::Grouped']['instance']);
+        $this->assertSame(GroupedPlugin::class, $pluginInfo['Space48_PreSell::Grouped']['instance']);
     }
 
     /**

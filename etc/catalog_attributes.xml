@@ -4,4 +4,8 @@
         <attribute name="pre_sell_qty"/>
         <attribute name="pre_sell"/>
     </group>
+    <group name="stock_item">
+        <attribute name="pre_sell_qty"/>
+        <attribute name="pre_sell"/>
+    </group>
 </config>
