@@ -6,4 +6,10 @@
     <type name="Magento\ProductAlert\Controller\Add\Stock">
         <plugin name="Space48_PreSell::Stock" type="Space48\PreSell\Plugin\ProductAlert\Controller\Add\StockPlugin" sortOrder="1" disabled="false"/>
     </type>
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="space48_presell_checkout_model_paymentinformationmanagement" type="Space48\PreSell\Plugin\Checkout\Model\PaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="space48_presell_checkout_model_guestpaymentinformationmanagement" type="Space48\PreSell\Plugin\Checkout\Model\GuestPaymentInformationManagement"/>
+    </type>
 </config>
