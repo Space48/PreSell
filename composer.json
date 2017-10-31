@@ -1,7 +1,7 @@
 {
   "name": "space48/presell",
   "type": "magento2-module",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "license": [
     "proprietary"
   ],
@@ -13,7 +13,7 @@
   },
   "require": {
     "php": "~5.6.0|~7.0.0",
-    "magento/framework": "100.0.*|100.1.*"
+    "magento/framework": "^100.1.0| ^101.0.0"
   },
   "require-dev": {
     "magento/marketplace-eqp": "~1.0.5",
