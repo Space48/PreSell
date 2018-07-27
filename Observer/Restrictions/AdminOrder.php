@@ -4,7 +4,7 @@ namespace Space48\PreSell\Observer\Restrictions;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
-
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
 
 class AdminOrder implements ObserverInterface
 {
@@ -54,7 +54,8 @@ class AdminOrder implements ObserverInterface
         foreach ($quote->getAllItems() as $quoteItem) {
             if (!$quoteItem ||
                 !$quoteItem->getProductId() ||
-                !$quoteItem->getQuote()
+                !$quoteItem->getQuote() ||
+                $quoteItem->getProductType() === Configurable::TYPE_CODE
             ) {
                 return;
             }
