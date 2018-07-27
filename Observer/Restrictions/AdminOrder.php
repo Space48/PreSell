@@ -4,7 +4,7 @@ namespace Space48\PreSell\Observer\Restrictions;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
-
+use Space48\PreSell\Observer\Restrictions\Product;
 
 class AdminOrder implements ObserverInterface
 {
@@ -52,10 +52,7 @@ class AdminOrder implements ObserverInterface
         $redirect = false;
 
         foreach ($quote->getAllItems() as $quoteItem) {
-            if (!$quoteItem ||
-                !$quoteItem->getProductId() ||
-                !$quoteItem->getQuote()
-            ) {
+            if (Product::isExcludedState($quoteItem)) {
                 return;
             }
 
