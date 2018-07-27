@@ -4,7 +4,7 @@ namespace Space48\PreSell\Observer\Restrictions;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
-use Magento\ConfigurableProduct\Model\Product\Type\Configurable;
+use Space48\PreSell\Observer\Restrictions\Product;
 
 
 class Add implements ObserverInterface
@@ -45,12 +45,7 @@ class Add implements ObserverInterface
         /* @var $quoteItem \Magento\Quote\Model\Quote\Item */
         $quoteItem = $observer->getEvent()->getQuoteItem();
 
-        if (!$quoteItem ||
-            !$quoteItem->getProductId() ||
-            !$quoteItem->getQuote() ||
-            $quoteItem->getQuote()->getIsSuperMode() ||
-            $quoteItem->getProductType() === Configurable::TYPE_CODE
-        ) {
+        if (Product::isExcludedState($quoteItem)) {
             return;
         }
 
